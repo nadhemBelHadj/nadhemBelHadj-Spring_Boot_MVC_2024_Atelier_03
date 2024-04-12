@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
+import com.nadhem.produits.entities.Categorie;
 import com.nadhem.produits.entities.Produit;
 
 public interface ProduitService {
@@ -15,5 +16,9 @@ public interface ProduitService {
 	List<Produit> getAllProduits();
 	
 	Page<Produit> getAllProduitsParPage(int page, int size);
+	
+	List<Categorie> getAllCategories();
+	
+
 
 }

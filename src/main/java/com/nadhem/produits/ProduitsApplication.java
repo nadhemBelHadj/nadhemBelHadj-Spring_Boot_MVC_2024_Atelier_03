@@ -20,9 +20,10 @@ public class ProduitsApplication implements CommandLineRunner  {
 	
 	@Override
 	public void run(String... args) throws Exception {
-	produitService.saveProduit(new Produit("PC Dell", 2600.0, new Date()));
+	/*produitService.saveProduit(new Produit("PC Dell", 2600.0, new Date()));
 	produitService.saveProduit(new Produit("PC Asus", 2800.0, new Date()));
-	produitService.saveProduit(new Produit("Imprimante Epson", 900.0, new Date()));
+	produitService.saveProduit(new Produit("Imp Epson", 900.0, new Date()));
+	*/
 		
 	}
 

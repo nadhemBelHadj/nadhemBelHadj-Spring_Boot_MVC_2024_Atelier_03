@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import com.nadhem.produits.entities.Categorie;
 import com.nadhem.produits.entities.Produit;
+import com.nadhem.produits.repos.CategorieRepository;
 import com.nadhem.produits.repos.ProduitRepository;
 
 @Service
@@ -13,6 +16,10 @@ public class ProduitServiceImpl implements ProduitService{
 
 	@Autowired
 	ProduitRepository produitRepository;
+	
+	
+	@Autowired
+	CategorieRepository categorieRepository;
 	
 	@Override
 	public Produit saveProduit(Produit p) {
@@ -51,6 +58,11 @@ public class ProduitServiceImpl implements ProduitService{
 	public Page<Produit> getAllProduitsParPage(int page, int size) {
 		
 		return produitRepository.findAll(PageRequest.of(page, size));
+	}
+
+	@Override
+	public List<Categorie> getAllCategories() {
+		return categorieRepository.findAll();
 	}
 
 	

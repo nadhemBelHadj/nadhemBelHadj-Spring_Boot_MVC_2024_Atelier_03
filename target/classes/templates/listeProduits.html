@@ -7,12 +7,7 @@
 <title>Liste des Produits</title>
 </head>
 <body>
-    <div th:replace="template"></div> 
-   <!-- Pour la version de spring boot 2.6+ Vous remplacez la ligne ci-dessus 
-         <div layout:fragment="Mycontent"> 
-         Par la ligne suivante :
-          <div th:replace="template"></div>  
-   -->
+   <div th:replace="template"></div>
 <div class="container">
 <div class="card">
   <div class="card-header">
@@ -21,12 +16,20 @@
   <div class="card-body">    
       <table class="table table-striped">
         <tr>
-          <th>ID</th><th>Nom Produit</th><th>Prix</th>
+          <th>ID</th><th>Nom Produit</th><th>Prix</th><th>Date</th><th>Catégorie</th>
          </tr>  
            <tr th:each="p:${produits.content}">
               <td th:text="${p.idProduit}"></td>
               <td th:text="${p.nomProduit}"></td>
               <td th:text="${p.prixProduit}"></td>   
+              <td th:text="${p.dateCreation}"></td>  
+              
+               <td th:if= "${!#strings.isEmpty(p.categorie)}" th:text="${p.categorie.nomCat}"></td>
+ 			   <td th:if= "${#strings.isEmpty(p.categorie)}" th:text="${'Pas de Catégorie'}"></td> 
+              
+               
+             
+              <td><a class="btn btn-success" th:href="@{modifierProduit(id=${p.idProduit}, page=${currentPage},size=${size})}">Editer</a></td>
               <td><a class="btn btn-danger" onclick="return confirm('Etes-vous sûr ?')"
                 th:href="@{supprimerProduit(id=${p.idProduit}, page=${currentPage},size=${size})}">Supprimer</a></td> 
            </tr>             
